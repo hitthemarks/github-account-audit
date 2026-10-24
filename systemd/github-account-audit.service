@@ -1,0 +1,12 @@
+[Unit]
+Description=Audit GitHub account for changes since the baseline
+Documentation=https://github.com/hitthemarks/github-account-audit
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/github-account-audit
+# Exit 1 means changes or findings were reported, not that the run failed.
+SuccessExitStatus=1
+NoNewPrivileges=yes
+PrivateTmp=yes
